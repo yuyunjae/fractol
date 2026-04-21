@@ -1,0 +1,6 @@
+# Build artifacts
+*.o
+fractol
+
+# MiniLibX (re-cloned per environment)
+mlx/

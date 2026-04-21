@@ -1,6 +1,8 @@
 NAME = fractol
 CC = cc -Wall -Wextra -Werror
-FLAG = -lmlx -framework OpenGl -framework AppKit
+MLX_DIR = mlx
+CFLAGS = -I$(MLX_DIR)
+FLAG = -L$(MLX_DIR) -lmlx -framework OpenGl -framework AppKit
 SRCS = hook.c main.c subfunc.c arg_check.c draw_fractol.c my_fractol.c
 OBJS = $(SRCS:.c=.o)
 
@@ -10,7 +12,7 @@ $(NAME) : $(OBJS)
 	$(CC) $(FLAG) $^ -o $@
 
 %.o : %.c fractol.h
-	$(CC) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
 	rm -rf $(OBJS)
